@@ -3,10 +3,15 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ChartViewer from './chart-viewer';
+import { PageProps } from 'next/types';
 
-export default async function ChartPage({ params }: { params: { filename: string } }) {
+interface ChartPageParams {
+  filename: string;
+}
+
+export default async function ChartPage({ params }: PageProps<ChartPageParams>) {
   // Make sure params is properly awaited
-  const filename = params.filename;
+  const { filename } = await params;
   const chart = getChartByFilename(filename);
   
   if (!chart) {
