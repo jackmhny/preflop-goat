@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 120 10% 97%;
+    --foreground: 0 0% 9%;
+    --card: 120 10% 94%;
+    --card-foreground: 0 0% 9%;
+    --popover: 120 10% 97%;
+    --popover-foreground: 0 0% 9%;
+    --primary: 150 75% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 150 3% 86%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 120 5% 88%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 150 5% 88%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 5% 84%;
+    --input: 150 5% 84%;
+    --ring: 150 75% 15%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 150 75% 15%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 16%;
+    --muted-foreground: 0 0% 64%;
+    --accent: 0 0% 16%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 16%;
+    --input: 0 0% 16%;
+    --ring: 150 75% 15%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(
+      rgba(9, 77, 38, 0.1) 0.5px,
+      transparent 0.5px
+    );
+    background-size: 24px 24px;
+  }
+}
+
+/* Felt texture */
+.felt-bg {
+  background-color: theme('colors.felt.DEFAULT');
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.felt-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.1'/%3E%3C/svg%3E");
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+}
